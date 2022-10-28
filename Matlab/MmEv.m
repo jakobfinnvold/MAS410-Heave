@@ -15,6 +15,9 @@ EndTime = 30.0;
 Counter = 1;
 StepTime = 1e-4;
 
+    Mm1 = ((m*g*dd)/(2*nsh*2*i_g)) * (1 + mu_eq*tanh(1000000/w0)); 
+
+
 while Time < EndTime
     %Platform position
     Zp = 0.8*sin(pi/5 * Time);
@@ -27,7 +30,7 @@ while Time < EndTime
     ZmDotDot = (4*pi*sin(pi*Time/5)/125); 
 
     % Wm
-    wm = ZmDot/rd; 
+    wm = 6*ZmDot/rd; 
 
     %Mm
     Mm = ((m*g*dd)/(2*nsh*2*i_g)) * (1 + mu_eq*tanh(wm/w0)); 
