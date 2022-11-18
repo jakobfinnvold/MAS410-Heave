@@ -82,14 +82,17 @@ Jeff_siplified = Jm
 
 %Motor cost factor: 
 w_m = 2; % [-] Factor, given in task
-D_mMax = 1000; %[cm^3/rev]
+D_mMax = 1000; %[cm^3/rev],  Factor, given in task
 D_m = 28.1; %[cm^3(/rev)], FRAM DATASHEET size 28, CHANGE IF NESSESARY, SAME UNIT AS ABOVE D_mMax
 C_m = w_m*(1+D_m/D_mMax); %Cost motor
 
 %Servo Valve cost factor:
-n_sv = 1; % [-] Number of servo valves
+
 w_sv = 2.5;%[-] Factor, given in task 
-Q_nlMax = 200;% [l/min]
+Q_nlMax = 200;% [l/min]  Factor, given in task
+
+%MÅ OPPDATERES ETTER VALGT ANTALL OG TYPE D
+n_sv = 1; % [-] Number of servo valves
 Q_nl = 200; %[l/min] %flow no load, CHANGE IF NESSESARY, SAME UNIT AS ABOVE Q_nlMax
 C_sv = w_sv*n_sv*(1+Q_nl/Q_nlMax)
 
@@ -98,9 +101,13 @@ n_HPU = 1; % [-], Number of HPUs
 w_HPU = 3;%[-] Factor, given in task
 P_HPUmax = 132; %kW
 
+% MÅ OPPDATERES ETTER VALGT HPU:
+P_HPU = 100; %kW, NOT CHOOSEN YET!!!!!!!!!!!!!!!!!!!!!!  
+%Cost HPU:
+C_hpu = w_HPU*n_HPU*(1+P_HPU/P_HPUmax)
 
+%Total Cost.
+TotalCost = C_m + C_sv + C_hpu;
 
-
-stl, mesh, numpy, 
 
 
