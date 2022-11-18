@@ -9,6 +9,11 @@ i_g = 46;
 mu_eq = 0.15;
 w0 = 5; 
 
+% Variables
+Dm = 200; %Cm3/rev
+nom_w = 421; %rad/s
+sp_drop = 10; 
+
 %Time integration
 Time = 0.0;
 EndTime = 30.0; 
@@ -30,10 +35,11 @@ while Time < EndTime
     ZmDotDot = (4*pi*sin(pi*Time/5)/125); 
 
     % Wm
-    wm = 6*ZmDot/rd; 
+    w_D = 6*ZmDot/rd; 
+    w_m = 46*w_D; 
 
     %Mm
-    Mm = ((m*g*dd)/(2*nsh*2*i_g)) * (1 + mu_eq*tanh(wm/w0)); 
+    Mm = ((m*g*dd)/(2*nsh*2*i_g)) * (1 + mu_eq*tanh(w_m/w0)); 
 
     TimePlot(Counter) = Time;
     zPlot(Counter) = Zp;
@@ -42,7 +48,7 @@ while Time < EndTime
     zmPlot(Counter) = Zm; 
     zmDotPlot(Counter) = ZmDot; 
     zmDotDotPlot(Counter) = ZmDotDot; 
-    wmPlot(Counter) = wm;
+    wmPlot(Counter) = w_m;
     MmPlot(Counter) = Mm;
 
     Time = Time + StepTime;
@@ -97,5 +103,3 @@ ylabel('Motor Moment in Nm');
 a = max(abs(aPlot)); 
 w = max(abs(wPlot)); 
 wmMax = max(abs(wmPlot)); 
-
-
