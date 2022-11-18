@@ -8,19 +8,29 @@ D = 28.1e-6; % m^3/rev
 J = 0.0012; % kg m^2
 wmMax = 13.4041 * 46; % Rad/s from MmEv. 
 rpmMax = wmMax/(2*pi) * 60;
-rpm = 6300; 
-
+rpm = 6300; % What is this?
 C = (D + VL1 + VL2)/(4*bulk); % m^3/Pa
 
 omega_mh = D/(2*pi*sqrt(J*C)); % Gives omega_mh = 218.0518 rad/s
 omega_v = 3*omega_mh; % 654.1554 rad/s
 
-Ql = rpmMax/60 * D * (10^3*60); %179
+Ql = rpmMax * D * (10^3);  %l/min, checked Units OK, 
+
 
 QNlMax = Ql * sqrt(215e5/(215e5-70e5)); 
 
 Qr = 1.1 * QNlMax * sqrt(70e5/215e5); 
 
+
+
+% PER
+l_min2m3s = 1/(60*10^3);
+volumetricEfficiency = 0.92;
+QlMaxIdealPER = rpmMax*D/60; %m^3/s
+QlMaxPer = QlMaxIdealPER/volumetricEfficiency; %m^3/s
+QlMaxIdealPER_litermin = QlMaxIdealPER/l_min2m3s;
+QlMaxPer_litermin = QlMaxPer/l_min2m3s;
+% Per stop
 %% Frequency analysis of bode plot
 clear; close all; clc; 
 

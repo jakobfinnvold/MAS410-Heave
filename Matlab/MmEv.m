@@ -1,13 +1,13 @@
 clear; close all; clc; 
 %Parameters
-rd = 0.225;
-m = 9000;
-g = 9.81;
-dd = 0.45;
-nsh = 3;
-i_g = 46;
-mu_eq = 0.15;
-w0 = 5; 
+rd = 0.225; %[m]
+m = 9000; %[kg]
+g = 9.81;%[m/s^2]
+dd = 0.45; %[m]
+nsh = 3; 
+i_g = 46; %[-]
+mu_eq = 0.15; % [-]
+w0 = 5; %Rad/s
 
 % Variables
 Dm = 200; %Cm3/rev
@@ -36,7 +36,7 @@ while Time < EndTime
 
     % Wm
     w_D = 6*ZmDot/rd; 
-    w_m = 46*w_D; 
+    w_m = i_g*w_D; 
 
     %Mm
     Mm = ((m*g*dd)/(2*nsh*2*i_g)) * (1 + mu_eq*tanh(w_m/w0)); 
