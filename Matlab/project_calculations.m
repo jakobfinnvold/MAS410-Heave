@@ -98,12 +98,13 @@ Q_nl = 200; %[l/min] %flow no load, CHANGE IF NESSESARY, SAME UNIT AS ABOVE Q_nl
 C_sv = w_sv*n_sv*(1+Q_nl/Q_nlMax)
 
 %Hydraulic Power Unit:
-n_HPU = 1; % [-], Number of HPUs
+
 w_HPU = 3;%[-] Factor, given in task
 P_HPUmax = 132; %kW
 
 % MÅ OPPDATERES ETTER VALGT HPU:
 P_HPU = 100; %kW, NOT CHOOSEN YET!!!!!!!!!!!!!!!!!!!!!!  
+n_HPU = 1; % [-], Number of HPUs
 %Cost HPU:
 C_hpu = w_HPU*n_HPU*(1+P_HPU/P_HPUmax)
 
